@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hightail - Sprint Board</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">
+<link type="text/css" rel="stylesheet" href="/assets/css/jquery-ui-1.10.2.custom.min.css" />
+<link type="text/css" rel="stylesheet" href="/assets/css/base.css" />
+</head>
+<body>
+<div id="wrapper">
+	<header>
+		<select name="team_id">
+		{% for team in teams %}
+		<option value="{{ team.id }}"{% if team.id == current_team.id %} selected="selected"{% endif %}>{{ team.name }}</option>
+		{% endfor %}
+		</select>
+		<a class="right" href="{% url profile request.user.username %}">{{ request.user.username }}</a>
+	</header>
+</div>
+</body>
+<script type="text/javascript" src="/assets/js/jquery-1.9.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-ui-1.10.2.custom.min.js"></script>
+<!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</html>
