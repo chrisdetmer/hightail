@@ -1,4 +1,4 @@
 hightail
 ========
 
-Sprint management using HTML5 / JS / Django
+Sprint management using HTML5 / jQuery / Django
