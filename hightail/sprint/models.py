@@ -18,7 +18,6 @@ SPRINT_STATUS = (
     ('draft', 'Draft'),
     ('open', 'Open'),
     ('closed', 'Closed'),
-    ('suspended', 'Suspended'),
     ('backlog', 'Backlog'),
     ('archived', 'Archived')
 )
@@ -27,9 +26,8 @@ STORY_STATUS = (
     ('tbp', 'To be pointed'),
     ('ready', 'Ready'),
     ('inprogress', 'In Progress'),
-    ('qa', 'QA'),
+    ('testing', 'Testing'),
     ('complete', 'Complete'),
-    ('suspended', 'Suspended'),
     ('backlog', 'Backlog'),
     ('archived', 'Archived')
 )
@@ -58,6 +56,7 @@ class BoardSection(models.Model):
     description = models.TextField(help_text='Overview of project', blank=True, null=True)
     team_id = models.IntegerField()
     url = models.CharField(max_length=100, blank=True, null=True)
+	sort_order = models.IntegerField(blank=True, null=True)
 
     def __unicode__(self):
         return '%s board section' % self.name
@@ -141,6 +140,7 @@ class SprintStory(models.Model):
     project_id = models.IntegerField(null=True, blank=True)
     section_id = models.IntegerField(null=True, blank=True)
     history = models.TextField(help_text='History of changes for this card', blank=True, null=True)
+	sort_order = models.IntegerField(blank=True, null=True)
     
     def __unicode__(self):
         return 'Sprint card "%s"' % self.id

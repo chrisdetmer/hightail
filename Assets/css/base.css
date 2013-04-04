@@ -1,11 +1,11 @@
 header, section, footer, aside, nav, article, figure, audio, video, canvas { display:block; }
 
-body { text-align: center; font-size: 14px; font-family: arial, sans-serif; background: transparent url(../img/corkboard-bg.jpg) center center; }
+body { text-align: center; font-size: 14px; font-family: arial, sans-serif; background: transparent url(../img/corkboard-bg.jpg) top left; }
 a { color: #09c; text-decoration: none; }
 a:hover { text-decoration: underline; color: #6cf; }
 
 /* header */
-header { height: 100px; background-color: #09c; border-bottom: 2px solid #069; text-align: left; }
+header { height: 50px; background-color: #09c; border-bottom: 2px solid #069; text-align: left; }
 header img.logo { float: left; margin-right: 10px; }
 header a { color: #fff; }
 header a:hover { color: #000; }
@@ -24,23 +24,37 @@ div.board .red { background-color: #f66; border-color: #f66; }
 div.board .orange { background-color: #f96; border-color: #f96; }
 div.board .purple { background-color: #c9f; border-color: #c9f; }
 div.board .brown { background-color: #c96; border-color: #c96; }
+div.board .black { background-color: #333; border-color: #333; color: #eee; }
+div.board .purple a, div.board .blue a, div.board .orange a, div.board .brown a, div.board .red a { color: #fff; }
 div.board div.row { width: 98%; padding: 10px; }
 div.board div.row div.left, div.board div.row div.right { width: 47%; background: rgba(153, 102, 51, 0.4); padding: 10px; }
-div.board div.row h2 { font-size: 1.5em; color: #fff; }
+div.board div.row h2 { font-size: 1.75em; color: #fff; background-color: rgba(153, 102, 51, 0.8);; padding: 5px 10px; margin-bottom: 5px; cursor: move; }
 div.board div.row h2 a { font-size: 0.8em; color: #6cf; }
 div.board div.row h2 a:hover { color: #fff; }
 div.board div.row h2 span.point-count { color: #f93; }
 div.board div.row ul.story-list li {  
 	width: 200px; 
-	min-height: 50px; 
+	min-height: 75px;
 	float: left; 
-	padding: 8px; 
-	margin: 5px; 
+	padding: 8px 8px 25px; 
+	margin: 0 5px 5px 0; 
 	cursor: move;
-	border: 2px solid #fff;
+	border: 2px dashed transparent;
+	box-shadow: 2px 2px 1px #420;
+	position: relative;
 }
 div.board div.row ul.story-list li:hover { border-color: #6cf; }
+div.board div.row ul.story-list li a.edit-story { position: absolute; top: 5px; right: 5px; display: none; width: 30px; height: 17px; color: #fff; background-color: #069; text-align: center;}
+div.board div.row ul.story-list li:hover a.edit-story { display: block; }
+div.board div.row ul.story-list li.blue:hover, div.board div.row ul.story-list li.green:hover, div.board div.row ul.story-list li.purple:hover, div.board div.row ul.story-list li.grey:hover { border-color: #fff; }
+div.board div.row ul.story-list li .description { display: block; height: 68px; overflow: hidden; }
+div.board div.row ul.story-list li textarea.edit-content { display: none; width: 188px; border: 1px solid #ccc; padding: 5px; }
+div.board div.row ul.story-list li .story-info { display: block; height: 15px; position: absolute; bottom: 5px; left: 10px; width: 200px; padding-top: 5px; }
+div.board div.row ul.story-list li .member { }
 div.board div.row ul.story-list li .points { float: right; font-style: italic; }
+div.board div.row ul.story-list li.open { width: 300px; min-height: 200px; }
+div.board div.row ul.story-list li.open .description { display: none; }
+div.board div.row ul.story-list li.open textarea.edit-content { display: block; width: 288px; height: 150px; }
 
 /* Misc */
 .clearfix:after {
