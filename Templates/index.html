@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hightail - Sprint Task Board</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css">
+<link type="text/css" rel="stylesheet" href="../Assets/css/jquery-ui-1.10.2.custom.min.css" />
+<link type="text/css" rel="stylesheet" href="../Assets/css/base.css" />
+</head>
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<header>
+	<img src="../Assets/img/hightail-logo.gif" alt="Hightail" class="logo" />
+	<div class="user-info right"><a href="/profile/chris">Chris</a> | <a href="/logout/">Log out</a></div>
+	<div class="team-info">Team: <select name="team_id">
+		<option value="1" selected="selected">crowdSPRING</option>
+		<option value="2">Team Two</option>
+	</select></div>
+</header>
+<div class="board" role="main">  
+	<div class="row clearfix">
+		<div class="left in-progress">
+			<h2>In progress <span class="point-count">10</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story blue">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story orange">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+			</ul>
+		</div>
+		<div class="right sprint">
+			<h2>Sprint <span class="point-count">17</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story pink">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story red">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story white">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story grey">
+					<p class="description">In hac habitasse platea dictumst. Integer euismod hendrerit metus, at cursus.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">7</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="left qa">
+			<h2>QA <span class="point-count">5</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story green">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story brown">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+			</ul>
+		</div>
+		<div class="right complete">
+			<h2>Complete <span class="point-count">10</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story purple">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story white">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story purple">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story white">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="left tbp">
+			<h2>To be pointed <span class="point-count">??</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story blue">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+			</ul>
+		</div>
+		<div class="right backlog">
+			<h2>Backlog <span class="point-count">30</span> <a href="/in-progress/" class="right">View &raquo;</a></h2>
+			<ul class="story-list">
+				<li class="story yellow">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">In hac habitasse platea dictumst. Integer euismod hendrerit metus, at cursus.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">7</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">In hac habitasse platea dictumst. Integer euismod hendrerit metus, at cursus.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">7</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non urna eget augue interdum mollis.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">3</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Mauris scelerisque cursus gravida. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">2</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">In hac habitasse platea dictumst. Integer euismod hendrerit metus, at cursus.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">7</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">Proin vehicula orci eget augue tempor ultrices.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">5</span></p>
+				</li>
+				<li class="story yellow">
+					<p class="description">In hac habitasse platea dictumst. Integer euismod hendrerit metus, at cursus.</p>
+					<p class="edit-story"><a href="#">Edit</a><span class="points">7</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<footer>
+
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+</body>
+</html>

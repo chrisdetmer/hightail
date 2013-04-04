@@ -15,7 +15,7 @@
 		<option value="{{ team.id }}"{% if team.id == current_team.id %} selected="selected"{% endif %}>{{ team.name }}</option>
 		{% endfor %}
 		</select>
-		<a class="right" href="{% url profile request.user.username %}">{{ request.user.username }}</a>
+		{% if request.user.is_authenticated %}<a class="right" href="{% url profile request.user.username %}">{{ request.user.username }}</a>{% endif %}
 	</header>
 	<section id="content">
 	{% block content %}

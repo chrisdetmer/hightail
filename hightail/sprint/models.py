@@ -23,7 +23,7 @@ SPRINT_STATUS = (
     ('archived', 'Archived')
 )
 
-CARD_STATUS = (
+STORY_STATUS = (
     ('tbp', 'To be pointed'),
     ('ready', 'Ready'),
     ('inprogress', 'In Progress'),
@@ -32,6 +32,12 @@ CARD_STATUS = (
     ('suspended', 'Suspended'),
     ('backlog', 'Backlog'),
     ('archived', 'Archived')
+)
+
+STORY_TYPE = (
+    ('product', 'Product'),
+    ('feature', 'Feature'),
+    ('story', 'Story')
 )
 
 class Team(models.Model):
@@ -46,12 +52,23 @@ class Team(models.Model):
     def get_sprints(self):
         return Sprint.objects.filter(team_id=self.id)
 
+class BoardSection(models.Model):
+    pub_date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100)
+    description = models.TextField(help_text='Overview of project', blank=True, null=True)
+    team_id = models.IntegerField()
+    url = models.CharField(max_length=100, blank=True, null=True)
+
+    def __unicode__(self):
+        return '%s board section' % self.name
+
 class Sprint(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     author_id = models.IntegerField(help_text='ID of author')
     team_id = models.IntegerField()
+	points = models.IntegerField(blank=True, null=True)
     description = models.TextField(help_text='Overview of sprint', blank=True, null=True)
     notes = models.TextField(help_text='Notes from sprint', blank=True, null=True)
     status = models.CharField(max_length=25, choices=SPRINT_STATUS)
@@ -72,20 +89,22 @@ class Sprint(models.Model):
         return SprintProject.objects.filter(sprint_id=self.id)
     
     @property
-    def get_cards(self):
-        return SprintCard.objects.filter(sprint_id=self.id)
+    def get_stories(self):
+        return SprintStory.objects.filter(sprint_id=self.id)
     
 class SprintProject(models.Model):
     title = models.CharField(max_length=100)
     color = models.CharField(max_length=25, choices=COLORS)
     status = models.CharField(max_length=25, choices=SPRINT_STATUS)
+	start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    type = models.CharField(max_length=25, choices=STORY_TYPE)
+	points = models.IntegerField(blank=True, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(help_text='Overview of project', blank=True, null=True)
     notes = models.TextField(help_text='Notes from sprint', blank=True, null=True)
     author_id = models.IntegerField(help_text='ID of author')
     sprint_id = models.IntegerField()
-    start_date = models.DateTimeField(blank=True, null=True)
-    end_date = models.DateTimeField(blank=True, null=True)
     history = models.TextField(help_text='History of changes for this project', blank=True, null=True)
     
     def __unicode__(self):
@@ -106,12 +125,13 @@ class SprintProject(models.Model):
             return None
     
     @property
-    def get_cards(self):
-        return SprintCard.objects.filter(project_id=self.id)
+    def get_stories(self):
+        return SprintStory.objects.filter(project_id=self.id)
     
-class SprintCard(models.Model):
+class SprintStory(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=25, choices=CARD_STATUS)
+    type = models.CharField(max_length=25, choices=STORY_TYPE)
+    status = models.CharField(max_length=25, choices=STORY_STATUS)
     content = models.TextField(help_text='Task to be performed', blank=True, null=True)
     notes = models.TextField(help_text='Notes from card', blank=True, null=True)
     color = models.CharField(max_length=25, choices=COLORS)
@@ -119,10 +139,11 @@ class SprintCard(models.Model):
     author_id = models.IntegerField(help_text='ID of author')
     sprint_id = models.IntegerField()
     project_id = models.IntegerField(null=True, blank=True)
+    section_id = models.IntegerField(null=True, blank=True)
     history = models.TextField(help_text='History of changes for this card', blank=True, null=True)
     
     def __unicode__(self):
-        return 'Sprint card ""' % self.id
+        return 'Sprint card "%s"' % self.id
     
     @property
     def author(self):
@@ -139,9 +160,8 @@ class SprintCard(models.Model):
             return None
         
     @property
-    def get_projects(self):
+    def get_project(self):
         if self.project_id:
             return SprintProject.objects.get(id=self.project_id)
         else:
             return None
-    

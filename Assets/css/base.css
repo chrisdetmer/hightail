@@ -1,0 +1,64 @@
+header, section, footer, aside, nav, article, figure, audio, video, canvas { display:block; }
+
+body { text-align: center; font-size: 14px; font-family: arial, sans-serif; background: transparent url(../img/corkboard-bg.jpg) center center; }
+a { color: #09c; text-decoration: none; }
+a:hover { text-decoration: underline; color: #6cf; }
+
+/* header */
+header { height: 100px; background-color: #09c; border-bottom: 2px solid #069; text-align: left; }
+header img.logo { float: left; margin-right: 10px; }
+header a { color: #fff; }
+header a:hover { color: #000; }
+header div.team-info { padding: 10px; }
+header div.user-info { float: right; padding: 10px; }
+
+/* sprint board */
+div.board { width: 100%; margin: 0 auto; text-align: left; }
+div.board .yellow { background-color: #ff9; border-color: #ff9; }
+div.board .blue { background-color: #6cf; border-color: #6cf; }
+div.board .green { background-color: #6f9; border-color: #6f9; }
+div.board .pink { background-color: #f9c; border-color: #f9c; }
+div.board .grey { background-color: #ccc; border-color: #ccc; }
+div.board .white { background-color: #fff; border-color: #fff; }
+div.board .red { background-color: #f66; border-color: #f66; }
+div.board .orange { background-color: #f96; border-color: #f96; }
+div.board .purple { background-color: #c9f; border-color: #c9f; }
+div.board .brown { background-color: #c96; border-color: #c96; }
+div.board div.row { width: 98%; padding: 10px; }
+div.board div.row div.left, div.board div.row div.right { width: 47%; background: rgba(153, 102, 51, 0.4); padding: 10px; }
+div.board div.row h2 { font-size: 1.5em; color: #fff; }
+div.board div.row h2 a { font-size: 0.8em; color: #6cf; }
+div.board div.row h2 a:hover { color: #fff; }
+div.board div.row h2 span.point-count { color: #f93; }
+div.board div.row ul.story-list li {  
+	width: 200px; 
+	min-height: 50px; 
+	float: left; 
+	padding: 8px; 
+	margin: 5px; 
+	cursor: move;
+	border: 2px solid #fff;
+}
+div.board div.row ul.story-list li:hover { border-color: #6cf; }
+div.board div.row ul.story-list li .points { float: right; font-style: italic; }
+
+/* Misc */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.clearfix {
+	display: inline-block;
+}
+html[xmlns] .clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+.right { float: right; }
+.left { float: left; }
