@@ -18,18 +18,20 @@ SPRINT_STATUS = (
     ('draft', 'Draft'),
     ('open', 'Open'),
     ('closed', 'Closed'),
-    ('backlog', 'Backlog'),
     ('suspended', 'Suspended'),
+    ('backlog', 'Backlog'),
     ('archived', 'Archived')
 )
 
 CARD_STATUS = (
     ('tbp', 'To be pointed'),
     ('ready', 'Ready'),
-    ('started', 'Started'),
-    ('suspended', 'Suspended'),
+    ('inprogress', 'In Progress'),
+    ('qa', 'QA'),
     ('complete', 'Complete'),
-    ('backlog', 'Backlog')
+    ('suspended', 'Suspended'),
+    ('backlog', 'Backlog'),
+    ('archived', 'Archived')
 )
 
 class Team(models.Model):
@@ -39,6 +41,10 @@ class Team(models.Model):
     
     def __unicode__(self):
         return '%s Team' % self.name
+    
+    @property
+    def get_sprints(self):
+        return Sprint.objects.filter(team_id=self.id)
 
 class Sprint(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -49,13 +55,25 @@ class Sprint(models.Model):
     description = models.TextField(help_text='Overview of sprint', blank=True, null=True)
     notes = models.TextField(help_text='Notes from sprint', blank=True, null=True)
     status = models.CharField(max_length=25, choices=SPRINT_STATUS)
+    history = models.TextField(help_text='History of changes for this sprint', blank=True, null=True)
 
     def __unicode__(self):
         return 'Sprint from %s to %s' % (self.start_date, self.end_date)
     
     @property
     def author(self):
-        return User.objects.get(id=self.author_id)
+        if self.author_id:
+            return User.objects.get(id=self.author_id)
+        else:
+            return None
+    
+    @property
+    def get_projects(self):
+        return SprintProject.objects.filter(sprint_id=self.id)
+    
+    @property
+    def get_cards(self):
+        return SprintCard.objects.filter(sprint_id=self.id)
     
 class SprintProject(models.Model):
     title = models.CharField(max_length=100)
@@ -68,13 +86,28 @@ class SprintProject(models.Model):
     sprint_id = models.IntegerField()
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
+    history = models.TextField(help_text='History of changes for this project', blank=True, null=True)
     
     def __unicode__(self):
         return 'Sprint project "%s"' % self.title
     
     @property
     def author(self):
-        return User.objects.get(id=self.author_id)
+        if self.author_id:
+            return User.objects.get(id=self.author_id)
+        else:
+            return None
+    
+    @property
+    def get_sprint(self):
+        if self.sprint_id:
+            return Sprint.objects.get(id=self.sprint_id)
+        else:
+            return None
+    
+    @property
+    def get_cards(self):
+        return SprintCard.objects.filter(project_id=self.id)
     
 class SprintCard(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -86,11 +119,29 @@ class SprintCard(models.Model):
     author_id = models.IntegerField(help_text='ID of author')
     sprint_id = models.IntegerField()
     project_id = models.IntegerField(null=True, blank=True)
+    history = models.TextField(help_text='History of changes for this card', blank=True, null=True)
     
     def __unicode__(self):
         return 'Sprint card ""' % self.id
     
     @property
     def author(self):
-        return User.objects.get(id=self.author_id)
+        if self.author_id:
+            return User.objects.get(id=self.author_id)
+        else:
+            return None
+    
+    @property
+    def get_sprint(self):
+        if self.sprint_id:
+            return Sprint.objects.get(id=self.sprint_id)
+        else:
+            return None
+        
+    @property
+    def get_projects(self):
+        if self.project_id:
+            return SprintProject.objects.get(id=self.project_id)
+        else:
+            return None
     

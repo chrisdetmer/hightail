@@ -17,6 +17,12 @@
 		</select>
 		<a class="right" href="{% url profile request.user.username %}">{{ request.user.username }}</a>
 	</header>
+	<section id="content">
+	{% block content %}
+		<p>Content goes here.</p>
+	{% endblock content %}
+	</section>
+	<footer></footer>
 </div>
 </body>
 <script type="text/javascript" src="/assets/js/jquery-1.9.min.js"></script>
