@@ -1,6 +1,6 @@
 header, section, footer, aside, nav, article, figure, audio, video, canvas { display:block; }
 
-body { text-align: center; font-size: 14px; font-family: arial, sans-serif; background: transparent url(../img/corkboard-bg.jpg) top left; }
+body { text-align: center; font-size: 14px; font-family: arial, sans-serif; background: #963 url(../img/corkboard-bg.jpg) top left repeat; margin: 0; }
 a { color: #09c; text-decoration: none; }
 a:hover { text-decoration: underline; color: #6cf; }
 select { border: none; }
@@ -34,7 +34,7 @@ html[xmlns] .clearfix {
 
 /* header */
 header { height: 50px; background-color: #09c; border-bottom: 2px solid #069; text-align: left; position: relative; }
-header img.logo { float: left; margin-right: 10px; }
+header span.logo { float: left; margin-right: 10px; width: 160px; height: 50px; background: transparent url(../img/hightail-logo-50.gif) center center no-repeat; }
 header a { color: #fff; }
 header a:hover { color: #000; }
 header div.team-info { padding: 10px; }
@@ -48,7 +48,7 @@ header ul.nav li a:hover, header ul.nav li.active a { background-color: #f1f1f1;
 header ul.nav li.active a:hover { background-color: #f1f1f1; border-color: #f1f1f1; color: #069; }
 
 /* sprint board */
-div.sprint { width: 100%; min-width: 600px; margin: 0 auto; text-align: left; }
+div.sprint { width: 1140px; min-width: 460px; margin: 0 auto; text-align: left; }
 div.sprint .yellow { background-color: #ff9; border-color: #ff9; }
 div.sprint .blue { background-color: #6cf; border-color: #6cf; }
 div.sprint .green { background-color: #6f9; border-color: #6f9; }
@@ -62,14 +62,14 @@ div.sprint .brown { background-color: #c96; border-color: #c96; }
 div.sprint .black { background-color: #333; border-color: #333; color: #eee; }
 div.sprint .purple a, div.sprint .blue a, div.sprint .orange a, div.sprint .brown a, div.sprint .red a { color: #fff; }
 /*div.sprint div.row { width: 98%; padding: 10px; }*/
-div.sprint div.board { width: 36%; min-width: 200px; background: rgba(153, 102, 51, 0.4); padding: 10px; float: left; margin: 10px; }
-div.sprint div.wide { width: 57%; }
+div.sprint div.board { width: 410px; min-width: 180px; background: rgba(153, 102, 51, 0.4); padding: 10px; float: left; margin: 10px; }
+div.sprint div.wide { width: 60%; }
 div.sprint div.board h2 { font-size: 1.75em; color: #fff; background-color: rgba(153, 102, 51, 0.6); padding: 5px 10px; margin-bottom: 5px; cursor: move; }
 div.sprint div.board h2 a { font-size: 0.6em; color: #6cf; }
 div.sprint div.board h2 a:hover { color: #fff; }
 div.sprint div.board h2 span.point-count { color: #f93; }
 div.sprint div.board ul.story-list li {  
-	width: 200px; 
+	width: 180px; 
 	min-height: 75px;
 	float: left; 
 	padding: 8px 8px 25px; 
@@ -87,15 +87,58 @@ div.sprint div.board ul.story-list li:hover a.edit-story { display: block; }
 div.sprint div.board ul.story-list li.blue:hover, div.sprint div.board ul.story-list li.green:hover, div.sprint div.board ul.story-list li.purple:hover, div.sprint div.board ul.story-list li.grey:hover { border-color: #fff; }
 div.sprint div.board ul.story-list li .description { display: block; height: 65px; overflow: hidden; }
 div.sprint div.board ul.story-list li textarea.content { background-color: #fff; border: 1px solid #ccc; width: 288px; height: 150px; padding: 5px; }
-div.sprint div.board ul.story-list li .story-info { display: block; height: 15px; position: absolute; bottom: 5px; left: 10px; width: 195px; padding-top: 5px; }
+div.sprint div.board ul.story-list li .story-info { display: block; height: 15px; position: absolute; bottom: 5px; left: 10px; width: 200px; padding-top: 5px; }
 div.sprint div.board ul.story-list li .points { background-color: transparent; width: 20px; text-align: right; float: right; font-style: italic; border: none; }
 div.sprint div.board ul.story-list li .member { }
-div.sprint div.board ul.story-list li.open { width: 300px; min-height: 200px; }
+div.sprint div.board ul.story-list li.open { width: 300px; min-height: 210px; z-index: 1000; box-shadow: 5px 5px 3px #666; }
 div.sprint div.board ul.story-list li.open:hover { border-color: #000; border-style: solid; }
 div.sprint div.board ul.story-list li.open a.edit-story { display: none; }
 div.sprint div.board ul.story-list li.open button.submit { display: inline-block; }
-div.sprint div.board ul.story-list li.open .story-info { height: 20px; bottom: 35px; }
+div.sprint div.board ul.story-list li.open .story-info { height: 20px; bottom: 45px; }
 div.sprint div.board ul.story-list li.open .display { display: none; }
 div.sprint div.board ul.story-list li.open textarea.content { display: block; }
-div.sprint div.board ul.story-list li.open input.points { background-color: #fff; border: 1px solid #ccc; padding: 2px; }
+div.sprint div.board ul.story-list li.open select { margin-bottom: 3px; }
+div.sprint div.board ul.story-list li.open input.points { background-color: #fff; border: 1px solid #ccc; padding: 2px; float: none; }
 div.sprint div.board ul.story-list li.open .story-info { width: 295px; }
+
+body.full div.sprint { width: 1220px; }
+body.full div.sprint div.board { width: 450px; }
+body.full div.sprint div.wide { width: 680px; }
+body.full div.sprint div.board li.story { width: 200px; }
+
+body.standard div.sprint { width: 1110px; }
+body.standard div.sprint div.board { width: 410px; }
+body.standard div.sprint div.wide { width: 620px; }
+body.standard div.sprint div.board li.story { width: 180px; }
+body.standard div.sprint div.board li.story .story-info { width: 180px; }
+
+body.medium { font-size: 0.9em; }
+body.medium div.sprint { width: 1000px; }
+body.medium div.sprint div.board { width: 370px; }
+body.medium div.sprint div.wide { width: 550px; }
+body.medium div.sprint div.board li.story { width: 155px; }
+body.medium div.sprint div.board li.story .story-info { width: 155px; }
+
+body.small { font-size: 0.8em; }
+body.small div.sprint { width: 770px; }
+body.small div.sprint div.board { width: 250px; }
+body.small div.sprint div.wide { width: 400px; }
+body.small div.sprint div.board li.open { width: 100%; }
+body.small div.sprint div.board li.open textarea { width: 240px; }
+
+body.mobile { font-size: 0.8em; }
+body.mobile header { height: 60px; }
+body.mobile header span.logo { background-image: url(../img/hightail-icon-50.gif); width: 50px; }
+body.mobile header ul.nav { left: 60px; width: 300px; top: 5px; }
+body.mobile header ul.nav li { margin-bottom: 3px; }
+body.mobile div.sprint { width: 460px; }
+body.mobile div.sprint div.board { width: 180px; }
+body.mobile div.sprint div.wide { width: 180px; }
+body.mobile div.sprint div.board h2 { font-size: 1.1em; }
+body.mobile div.sprint div.board li.open { width: 155px; }
+body.mobile div.sprint div.board li.open textarea { width: 145px; }
+
+/* footer */
+footer { color: #fff; background-color: rgba(153, 102, 51, 0.6); padding: 10px; font-size: 0.9em; }
+footer a { color: #fc3; font-weight: bold; }
+footer a:hover { color: #069; }

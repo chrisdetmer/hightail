@@ -38,10 +38,13 @@ STORY_TYPE = (
     ('story', 'Story')
 )
 
+#class Settings(models.Model):
+	
 class Team(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
     members = models.TextField(help_text='Comma separated list of user IDs.', blank=True, null=True)
+	logo = models.ImageField(null=True, blank=True, upload_to='/Assets/team/')
     
     def __unicode__(self):
         return '%s Team' % self.name
@@ -57,6 +60,7 @@ class BoardSection(models.Model):
     team_id = models.IntegerField()
     url = models.CharField(max_length=100, blank=True, null=True)
 	sort_order = models.IntegerField(blank=True, null=True)
+	columns = models.IntegerField(default=2, blank=True, null=True)
 
     def __unicode__(self):
         return '%s board section' % self.name

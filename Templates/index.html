@@ -11,12 +11,12 @@
 <link type="text/css" rel="stylesheet" href="../Assets/css/jquery/jquery-ui-1.10.2.custom.min.css" />
 <link type="text/css" rel="stylesheet" href="../Assets/css/base.css" />
 </head>
-<body>
+<body class="full">
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 <header>
-	<img src="../Assets/img/hightail-logo-50.gif" alt="Hightail" class="logo" />
+	<span class="logo"></span>
 	<div class="user-info right">Team: <select name="team_id">
 		<option value="1" selected="selected">crowdSPRING</option>
 		<option value="2">Team Two</option>
@@ -41,7 +41,7 @@
 					<span class="story-info">
 						<span class="display member" data-user-id="2">Chris</span>
 						<span class="display points">3</span>
-						<input type="text" class="points hide" value="3" />
+						<br /><input type="text" class="points hide" value="3" />
 					</span>
 					<a class="edit-story" href="#">edit</a><button class="button cancel" type="button">cancel</button><button class="button submit" type="button">save</button>
 				</li>
@@ -209,7 +209,7 @@
 	</form>
 </div>
 <footer>
-
+	<p><a href="https://github.com/chrisdetmer/hightail">Hightail</a>, powered by <a href="http://djangoproject.com/">Django</a>, <a href="http://jquery.com/">jQuery</a>, <a href="">MySQL</a>, and HTML5.</p>
 </footer>
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>-->
