@@ -141,6 +141,7 @@ class SprintStory(models.Model):
     section_id = models.IntegerField(null=True, blank=True)
     history = models.TextField(help_text='History of changes for this card', blank=True, null=True)
 	sort_order = models.IntegerField(blank=True, null=True)
+	priority = models.BooleanField(default=0)
     
     def __unicode__(self):
         return 'Sprint card "%s"' % self.id
